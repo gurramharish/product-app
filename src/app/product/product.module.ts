@@ -8,6 +8,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
+import { AuthGuard } from '../auth/guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -20,11 +21,13 @@ const routes: Routes = [
       },
       {
         path: 'create',
-        component: ProductEditComponent
+        component: ProductEditComponent,
+        canActivate: [AuthGuard]
       },
       {
         path: 'edit/:id',
-        component: ProductEditComponent
+        component: ProductEditComponent,
+        canActivate: [AuthGuard]
       },
       {
         path: 'search',

@@ -1,8 +1,14 @@
 <h2>Product Search</h2>
 <!-- <input type="text" #param (keyup)="searchProducts(param.value)" placeholder="Search..."/> -->
 
-<form>
-
+<form [formGroup]="searchForm">
+  <input formControlName="searchBox" name="search" type="text" />
 </form>
 
-<app-product-list></app-product-list>
+<h5>Searching for {{searchText}}</h5>
+
+<ul>
+  <li *ngFor="let product of products$ | async">
+    {{product.name}}
+  </li>
+</ul>

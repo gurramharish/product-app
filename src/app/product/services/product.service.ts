@@ -32,4 +32,17 @@ export class ProductService {
     return this.http.get<Product[]>(`${environment.apiEndPoint}/api/products?q=${q}`);
   }
 
+  saveProduct(product: Product): Observable<Product> {
+    if (product.id) { // update
+      return this.http
+            .put<Product>(`${environment.apiEndPoint}/api/products/${product.id}`,
+                          product);
+    } else { // create
+      return this.http
+      .post<Product>(`${environment.apiEndPoint}/api/products`,
+                    product);
+    }
+  }
+
+
 }

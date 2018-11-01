@@ -19,6 +19,7 @@ import { SharedModule } from './shared/shared.module';
 import { CartModule } from './cart/cart.module';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ProductModule } from './product/product.module';
+import { AuthModule } from './auth/auth.module';
 
 // Step 1: route, configuration, map url to component
 
@@ -48,6 +49,7 @@ const routes: Routes = [
     SharedModule,
     CartModule,
     ProductModule,
+    AuthModule,
     HttpClientModule,
     RouterModule.forRoot(routes)
     // HttpModule

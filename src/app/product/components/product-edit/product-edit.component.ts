@@ -31,7 +31,10 @@ export class ProductEditComponent implements OnInit {
   }
 
   saveProduct() {
-
+    this.productService.saveProduct(this.product)
+    .subscribe(savedProduct => {
+      alert('Product saved successfully');
+    });
   }
 
   resetForm() {
