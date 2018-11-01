@@ -1,0 +1,9 @@
+<div appHighlight [color]='highlightColor'>
+  <hr />
+  <p>Copy rights @{{year}}, {{company}}</p>
+  <app-address [companyAddress]="address"></app-address>
+  <button (click)="contactClicked()">
+    Contact
+  </button>
+</div>
+

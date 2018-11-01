@@ -1,0 +1,55 @@
+<div>
+  <!--
+    {{title}} - intepolation
+    (click)="expression" - Event binding
+    propName="Fixed Value"
+    [propName]="expression" - property binding
+
+    | -- PIPE, formatter, transform data in view
+
+    *ngIf -- Structural directive * Add/remove DOM element
+
+    ngClass -- attribute directive (modify attribute values)
+  -->
+    <h2>{{title}}</h2>
+    <p>Counter {{counter}}</p>
+    <p>Counter + 2 = {{counter + 2}}</p>
+    <div (click)="divClicked()">
+      <p>Click Button</p>
+        <button (click)="increment($event)">+1</button>
+    </div>
+    <br/>
+    <button (click)="counter = counter-1">-1</button>
+    <p>Property Binding</p>
+
+    <!--
+      # - template reference variable to get access to DOM element of this component only
+    -->
+    <input #inputValue value="Hi"  (keyup)="printOnKeyUp(inputValue.value)"/>
+    <input [value]="counter" (focus)="counter = counter + 10" [(ngModel)]="counter"/>
+
+    <button [disabled]="counter % 2 == 1">
+      Disabled {{counter % 2}}
+    </button>
+
+    <p>title = {{title | lowercase}}</p>
+    <p>TITLE = {{title | uppercase}}</p>
+    <p>Price INR = {{price | currency:'INR'}}</p>
+    <p>Price EURO = {{price | currency:'EUR'}}</p>
+    <p> Counter / 3 = {{ counter / 3 }}</p>
+    <p> Counter / 3 with 4 precision = {{ counter / 3 | number:".4"}}</p>
+    <p>Date {{ today }}</p>
+    <p>Date {{ today | date:'MM-dd-yyyy' | date:'dd-MMM-yyyy'}}</p>
+    <p>Date | date:'fullDate' | uppercase = {{today | date : 'fullDate' | uppercase}}</p>
+
+    <p *ngIf="counter % 2 == 0">
+      Counter value is {{ counter }}
+    </p>
+    <div [ngClass]="{highlight : hl, hasBorder: true}"
+      (mouseenter)="hl = true"
+      (mouseleave)="hl = false"
+    >Mouse is on text</div>
+
+    <hr/>
+    <p>Power pipe 2^Counter = {{ 2 | power: counter}}</p>
+</div>

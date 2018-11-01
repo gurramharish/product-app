@@ -1,0 +1,11 @@
+<h2 *ngIf="product.id; else createProduct">Product Edit - {{product.name}}</h2>
+<ng-template #createProduct><h2>Product Create</h2></ng-template>
+
+<form>
+  Name <input name="productName" [(ngModel)]="product.name"/>
+  Price <input name="productPrice" [(ngModel)]="product.price" />
+  Year <input name="productYear" [(ngModel)]="product.year" />
+  Brand <select name="brandId" [(ngModel)]="product.brandId">
+    <option *ngFor="let brand of brands$ | async" [value]="brand.id" >{{brand.name}}</option>
+    </select>
+</form>

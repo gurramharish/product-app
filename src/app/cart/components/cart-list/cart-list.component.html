@@ -1,0 +1,21 @@
+<table *ngIf="(items$ | async)?.length !== 0; else emptyCart">
+  <thead>
+    <th>Name</th>
+    <th>Price</th>
+    <th>Qty</th>
+    <th>Total</th>
+    <th>Delete</th>
+  </thead>
+  <tbody>
+    <tr *ngFor='let item of items$ | async'>
+        <td>{{item.name}}</td>
+        <td>{{item.price}}</td>
+        <td>{{item.qty}}</td>
+        <td>{{item.qty * item.price}}</td>
+        <td><button (click)="removeItem(item.id)">Delete</button></td>
+    </tr>
+  </tbody>
+</table>
+<ng-template #emptyCart>
+    <p>No items in the cart</p>
+  </ng-template>

@@ -1,0 +1,23 @@
+<h2>Product List</h2>
+
+<table *ngIf="products.length !== 0; else noProducts">
+  <tr>
+   <th>Name</th>
+   <th>Price</th>
+   <th>Year</th>
+   <th>Ops</th>
+  </tr>
+  <tr *ngFor="let product of products">
+    <td>{{product.name}}</td>
+    <td>{{product.price}}</td>
+    <td>{{product.year}}</td>
+    <td>
+      <button (click)="deleteProduct(product.id)">
+        D
+      </button>
+      <a [routerLink]="['/products', 'edit', product.id]" class="button">E</a>
+      <button (click)="addItemToCart(product)">A</button>
+    </td>
+  </tr>
+</table>
+<ng-template #noProducts>No products to load</ng-template>
